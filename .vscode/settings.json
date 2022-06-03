@@ -1,0 +1,13 @@
+{
+    "restoreTerminals.artificialDelayMilliseconds": 1000,
+    "restoreTerminals.terminals": [
+        {
+            "splitTerminals": [
+                {
+                    "name": "python3",
+                    "commands": ["cd ..", "unalias test", "alias test=\"clear && python3 main.py\"", "clear"]
+                }
+            ]
+        }
+    ]
+}

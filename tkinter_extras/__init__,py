@@ -1,0 +1,12 @@
+from .constants import *
+from .utility import *
+from .utility import _add_as_methods
+from .classes import *
+
+
+for widget in STD_WIDGETS:
+    for name, method in _add_as_methods.items():
+        setattr(widget, name, method);
+
+
+del _add_as_methods;

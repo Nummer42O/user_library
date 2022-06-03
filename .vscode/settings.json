@@ -8,6 +8,14 @@
                     "commands": ["cd ..", "unalias test", "alias test=\"clear && python3 main.py\"", "clear"]
                 }
             ]
+        },
+        {
+            "splitTerminals": [
+                {
+                    "name": "git",
+                    "commands": ["git pull"]
+                }
+            ]
         }
     ]
 }

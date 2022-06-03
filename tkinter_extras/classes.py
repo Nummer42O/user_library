@@ -794,6 +794,7 @@ class Scrollframe(tk.Frame):
         for key, value in extra: setattr(self, '_' + key, value);
 
         self._adopting = False;
+        self._x, self._y = 0, 0;
 
         tk.Frame.bind(self, "<Configure>", self._update_outer, ADD);
         self._outer_frame.bind("<Configure>", self._update_outer, ADD);
@@ -841,7 +842,24 @@ class Scrollframe(tk.Frame):
         if not self._adopting:
             self._adopting = True
             
-            
+            tk.Frame.update(self._outer_frame);
+            tk.Frame.update_idletasks(self._outer_frame);
+
+            max_x = self.winfo_width()  - self._outer_frame.winfo_width();
+            max_y = self.winfo_height() - self._outer_frame.winfo_height();
+
+            if self._x < 0:
+                self._x = 0;
+            elif self._x > max_x:
+                self._x = max_x;
+            if self._y < 0:
+                self._y = 0;
+            elif self._y > max_y:
+                self._y = max_x;
+
+            tk.Frame.place_configure(self, x=self._x, y=self._y);
+
+            self._yscrollcommand()
             
             self._adopting = False
 
